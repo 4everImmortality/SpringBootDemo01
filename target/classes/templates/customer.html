@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ch" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Management</title>
+</head>
+<body>
+<h1>Customer Management</h1>
+
+<!-- 添加客户表单 -->
+<form th:action="@{/customer/addCustomer}" method="post">
+    <label>Identity:</label>
+    <input type="text" name="identity" required><br>
+
+    <label>CustName:</label>
+    <input type="text" name="custname" required><br>
+
+    <label>Gender:</label>
+    <input type="text" name="sex" required><br>
+
+    <label>Address:</label>
+    <input type="text" name="address" required><br>
+
+    <label>Phone:</label>
+    <input type="text" name="phone" required><br>
+
+    <label>Career:</label>
+    <input type="text" name="career" required><br>
+
+    <button type="submit">Add Customer</button>
+</form>
+
+<!-- 修改客户信息表单 -->
+<form th:action="@{/customer/updateCustomer}" method="post">
+    <label>Identity:</label>
+    <input type="text" name="identity" required><br>
+
+    <label>New CustName:</label>
+    <input type="text" name="custname" required><br>
+
+    <label>New Gender:</label>
+    <input type="text" name="sex" required><br>
+
+    <label>New Address:</label>
+    <input type="text" name="address" required><br>
+
+    <label>New Phone:</label>
+    <input type="text" name="phone" required><br>
+
+    <label>New Career:</label>
+    <input type="text" name="career" required><br>
+
+    <button type="submit">Update Customer</button>
+</form>
+
+<!-- 删除客户信息表单 -->
+<form th:action="@{/customer/deleteCustomer}" method="post">
+    <label>Identity:</label>
+    <input type="text" name="identity" required><br>
+
+    <button type="submit">Delete Customer</button>
+</form>
+
+<!-- 客户列表展示 -->
+<table style="width: 600px" border="2" cellspacing="1">
+    <caption>Customer List</caption>
+    <thead>
+    <tr>
+        <th>Identity</th>
+        <th>CustName</th>
+        <th>Gender</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Career</th>
+        <th>CreateTime</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user:${customers}">
+        <td th:text="${user.identity}"></td>
+        <td th:text="${user.custname}"></td>
+        <td th:text="${user.sex}"></td>
+        <td th:text="${user.address}"></td>
+        <td th:text="${user.phone}"></td>
+        <td th:text="${user.career}"></td>
+        <td th:text="${user.createtime}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
